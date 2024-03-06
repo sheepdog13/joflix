@@ -1,11 +1,25 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Home",
 };
+export const baseurl = "https://nomad-movies.nomadcoders.workers.dev/movies";
+const getMovies = async () => {
+  const response = await fetch(baseurl);
+  return response.json();
+};
 
-export default function page() {
+export default async function home() {
+  const movies = await getMovies();
   return (
     <>
-      <h1>안녕하세요</h1>
+      <ul>
+        {movies.map((movie) => (
+          <Link href={`/movie/${movie.id}`}>
+            <li key={movie.id}>{movie.title}</li>
+          </Link>
+        ))}
+      </ul>
     </>
   );
 }
