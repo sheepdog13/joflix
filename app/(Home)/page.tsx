@@ -16,7 +16,9 @@ export default async function home() {
       <ul>
         {movies.map((movie) => (
           <Link href={`/movie/${movie.id}`}>
-            <li key={movie.id}>{movie.title}</li>
+            <li style={{ height: "100px" }} key={movie.id}>
+              {movie.title}
+            </li>
           </Link>
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import Navigation from "./components/Header";
+import "./styles/global.css";
+import Header from "./components/\bHeader/Header";
 export const metadata: Metadata = {
   title: {
     template: "%s | Next Movies",
@@ -16,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
+        <Header />
         {children}
       </body>
     </html>

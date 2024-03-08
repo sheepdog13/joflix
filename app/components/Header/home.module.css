@@ -1,0 +1,86 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 45px;
+  color: white;
+}
+
+.logoAndMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logoAndMenu img {
+  width: 80px;
+  margin-right: 30px;
+}
+
+.logoAndMenu ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 13px;
+  color: #e5e5e5;
+}
+
+.logoAndMenu ul li {
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.logoAndMenu ul li:hover {
+  opacity: 0.7;
+}
+
+.current {
+  color: #fff;
+  font-weight: bold;
+}
+.current:hover {
+  opacity: 1 !important;
+}
+
+.userActionsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.userActionsContainer div {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.userActionsContainer div input {
+  position: absolute;
+  left: -5px;
+  width: 280px;
+  height: 30px;
+  padding: 5px 0;
+  padding-left: 35px;
+  font-size: 18px;
+  background-color: #121212;
+  color: #fff;
+  border-color: #e5e5e5;
+  transform-origin: right center;
+}
+
+.userActionsContainer svg {
+  z-index: 999;
+  font-size: 30px;
+}
+
+.userActionsContainer img {
+  object-fit: cover;
+  border-radius: 5px;
+  width: 35px;
+  height: 35px;
+}
