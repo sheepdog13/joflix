@@ -1,0 +1,32 @@
+.screen {
+  height: 80vh;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+}
+
+.screen h1 {
+  font-size: 60px;
+  font-family: "Cart";
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.screen p {
+  width: 50%;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.btnBox button {
+  width: 100px;
+  padding: 10px;
+}

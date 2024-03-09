@@ -1,3 +1,22 @@
+@font-face {
+  font-family: "Cart";
+  src: local("Cart"), local("Cart");
+  font-weight: 500;
+  src: url("/font/cartBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Cart";
+  src: local("Cart"), local("Cart");
+  font-weight: normal;
+  src: url("/font/cartMedium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Cart";
+  src: local("Cart"), local("Cart");
+  font-weight: 700;
+  src: url("/font/cartExtraBold.ttf") format("truetype");
+}
+
 html,
 body,
 div,
@@ -86,6 +105,7 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
+  color: #fff;
 }
 /* HTML5 display-role reset for older browsers */
 article,
