@@ -105,7 +105,6 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
-  color: #fff;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -153,6 +152,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 button {

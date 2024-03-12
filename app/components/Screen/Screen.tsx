@@ -1,4 +1,3 @@
-"use client";
 import styles from "./screen.module.css";
 import SvgIcon from "@mui/material/SvgIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";

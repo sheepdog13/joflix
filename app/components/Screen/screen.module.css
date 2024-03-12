@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   background-size: cover;
+  color: #fff;
 }
 
 .screen h1 {
@@ -40,6 +41,9 @@
 
 .btnBox div svg {
   font-size: 25px;
+}
+.btnBox div a:hover {
+  text-decoration: none;
 }
 
 .btnBox div.play {
