@@ -1,4 +1,4 @@
-import styles from "./modal.module.css";
+import styles from "./detail.module.css";
 import SvgIcon from "@mui/material/SvgIcon";
 import CloseIcon from "@mui/icons-material/Close";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -45,14 +45,14 @@ const getsimilars = async (id: string) => {
   return response.json();
 };
 
-export default async function Modal({ id }: { id: string }) {
+export default async function Detail({ id }: { id: string }) {
   const movie: Movie = await getMovie(id);
   const credit = await getcredits(id);
   const similars: Similar[] = await getsimilars(id);
   return (
     <>
       <div className={styles.overlay}>
-        <div className={styles.modal}>
+        <div className={styles.wrapper}>
           <div
             className={styles.coverBox}
             style={{

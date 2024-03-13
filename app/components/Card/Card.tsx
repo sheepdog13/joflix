@@ -1,6 +1,5 @@
-import { useState } from "react";
 import FavoriteButton from "../common/FavoriteButton";
-import { Movie, Similar } from "../modal/Modal";
+import { Movie, Similar } from "../detail/Detail";
 import styles from "./card.module.css";
 
 interface CardProps {

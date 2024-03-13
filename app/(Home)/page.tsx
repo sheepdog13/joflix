@@ -1,6 +1,6 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Screen from "../components/Screen/Screen";
-import Modal from "../components/modal/Modal";
+import Detail from "../components/detail/Detail";
 
 export interface Movie {
   backdrop_path: string;
@@ -29,7 +29,7 @@ export default async function Home(params: Params) {
       <Screen movie={movies[0]} />
       {id && (
         <>
-          <Modal id={id} />
+          <Detail id={id} />
         </>
       )}
     </>
