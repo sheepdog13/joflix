@@ -2,9 +2,29 @@ import styles from "./modal.module.css";
 import SvgIcon from "@mui/material/SvgIcon";
 import CloseIcon from "@mui/icons-material/Close";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import Link from "next/link";
+import Card from "../Card/Card";
+import FavoriteButton from "../common/FavoriteButton";
+
+export interface Movie {
+  backdrop_path: string;
+  title: string;
+  release_date: string;
+  runtime: string;
+  overview: string;
+  genres: { id: number; name: string }[];
+}
+
+export interface Similar {
+  backdrop_path: string | null;
+  id: number;
+  original_title: string;
+  overview: string;
+  poster_path: string | null;
+  release_date: string;
+}
+
 const getMovie = async (id: string) => {
   const response = await fetch(
     `https://nomad-movies.nomadcoders.workers.dev/movies/${id}`
@@ -26,9 +46,9 @@ const getsimilars = async (id: string) => {
 };
 
 export default async function Modal({ id }: { id: string }) {
-  const movie = await getMovie(id);
+  const movie: Movie = await getMovie(id);
   const credit = await getcredits(id);
-  const similars = await getsimilars(id);
+  const similars: Similar[] = await getsimilars(id);
   return (
     <>
       <div className={styles.overlay}>
@@ -49,9 +69,7 @@ export default async function Modal({ id }: { id: string }) {
                   <SvgIcon component={PlayArrowIcon} />
                   <button>재생</button>
                 </div>
-                <div className={styles.radius}>
-                  <SvgIcon component={AddIcon} />
-                </div>
+                <FavoriteButton />
                 <div className={styles.radius}>
                   <SvgIcon component={ThumbUpOffAltIcon} />
                 </div>
@@ -94,20 +112,9 @@ export default async function Modal({ id }: { id: string }) {
               <h2>함께 시청된 콘텐츠</h2>
               <div className={styles.similarGrid}>
                 {similars.map((similar) => (
-                  <div key={similar.id} className={styles.card}>
-                    <div
-                      className={styles.cardImg}
-                      style={{ backgroundImage: `url(${similar.poster_path})` }}
-                    ></div>
-                    <h3>{similar.original_title}</h3>
-                    <div className={styles.cardDesc}>
-                      <div>{movie.release_date}</div>
-                      <div>{movie.runtime} 분</div>
-                    </div>
-                    <div className={styles.cardContent}>
-                      <div className={styles.longText}>{similar.overview}</div>
-                    </div>
-                  </div>
+                  <Link href={{ query: { id: similar.id } }}>
+                    <Card key={similar.id} movie={movie} similar={similar} />
+                  </Link>
                 ))}
               </div>
             </div>
