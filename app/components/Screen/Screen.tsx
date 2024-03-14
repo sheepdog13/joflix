@@ -29,7 +29,9 @@ export default function Screen({ movie }: ScreenProps) {
           </div>
           <div>
             <SvgIcon component={ErrorOutlineOutlinedIcon} />
-            <Link href={{ query: { id } }}>상세 정보</Link>
+            <Link scroll={false} href={{ query: { id } }}>
+              상세 정보
+            </Link>
           </div>
         </div>
       </div>

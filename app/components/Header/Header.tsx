@@ -1,5 +1,5 @@
 "use client";
-import styles from "./home.module.css";
+import styles from "./header.module.css";
 import {
   motion,
   useAnimation,

@@ -1,5 +1,6 @@
 .screen {
-  height: 100vh;
+  position: relative;
+  height: 90vh;
   padding: 60px;
   display: flex;
   flex-direction: column;
