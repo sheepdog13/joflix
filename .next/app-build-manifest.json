@@ -5,6 +5,12 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(Home)/loading.js"
     ],
+    "/(Home)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(Home)/page.css",
+      "static/chunks/app/(Home)/page.js"
+    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -15,12 +21,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
-    ],
-    "/(Home)/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/(Home)/page.css",
-      "static/chunks/app/(Home)/page.js"
     ]
   }
 }

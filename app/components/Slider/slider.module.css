@@ -13,6 +13,7 @@
   margin: 10px 0;
   font-size: 16px;
   color: #e5e5e5;
+  margin-left: 4%;
 }
 
 .slider {
@@ -24,9 +25,12 @@
   height: 120px;
 }
 
+.slider:hover .row span svg {
+  display: block;
+}
+
 .row {
   position: absolute;
-  padding: 0 4%;
   top: 0;
   left: 0;
   display: grid;
@@ -35,14 +39,29 @@
   width: 100%;
 }
 
-.row span {
+.slider span {
   position: absolute;
   top: 0;
-  width: 4%;
-  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 4%;
+  height: 120px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  z-index: 99;
+}
+
+.slider:hover span {
+  background: hsla(0, 0%, 8%, 0.7);
+}
+
+.slider:hover span svg {
+  display: block;
+}
+
+.slider span svg {
+  display: none;
 }
 
 .pre {
@@ -58,4 +77,5 @@
   background-size: cover;
   background-position: center center;
   height: 120px;
+  z-index: 10;
 }
