@@ -6,6 +6,8 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import Link from "next/link";
 import Card from "../Card/Card";
 import FavoriteButton from "../common/FavoriteButton";
+import { getSimilars } from "../../api/movie/getSimilars";
+import { getMovie } from "../../api/movie/getMoive";
 
 export interface Movie {
   backdrop_path: string;
@@ -25,12 +27,6 @@ export interface Similar {
   release_date: string;
 }
 
-const getMovie = async (id: string) => {
-  const response = await fetch(
-    `https://nomad-movies.nomadcoders.workers.dev/movies/${id}`
-  );
-  return response.json();
-};
 const getcredits = async (id: string) => {
   const response = await fetch(
     `https://nomad-movies.nomadcoders.workers.dev/movies/${id}/credits`
@@ -38,17 +34,10 @@ const getcredits = async (id: string) => {
   return response.json();
 };
 
-const getsimilars = async (id: string) => {
-  const response = await fetch(
-    `https://nomad-movies.nomadcoders.workers.dev/movies/${id}/similar`
-  );
-  return response.json();
-};
-
 export default async function Detail({ id }: { id: string }) {
   const movie: Movie = await getMovie(id);
   const credit = await getcredits(id);
-  const similars: Similar[] = await getsimilars(id);
+  const similars: Similar[] = await getSimilars(id);
 
   return (
     <>

@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import styles from "./slider.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { Movie } from "../../(Home)/page";
 import SvgIcon from "@mui/material/SvgIcon";
@@ -34,6 +33,32 @@ const rowVariants = {
 };
 
 const offset = 5;
+
+const boxVariants = {
+  normal: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.3,
+    y: -50,
+    transition: {
+      delay: 0.5,
+      duaration: 0.3,
+      type: "tween",
+    },
+  },
+};
+
+const infoVariants = {
+  hover: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duaration: 0.1,
+      type: "tween",
+    },
+  },
+};
 
 export default function Slider({ movies }: SliderProps) {
   const [index, setIndex] = useState(0);
@@ -91,10 +116,21 @@ export default function Slider({ movies }: SliderProps) {
               .slice(offset * index, offset * index + offset)
               .map((movie) => (
                 <motion.div
-                  className="w-full h-32 bg-cover bg-center z-10"
-                  key={movie.id}
+                  className="w-full h-32 bg-cover bg-center origin-center first:origin-top-left last:origin-top-right"
                   style={{ backgroundImage: `url(${movie.backdrop_path})` }}
-                />
+                  variants={boxVariants}
+                  initial="normal"
+                  whileHover="hover"
+                  transition={{ type: "tween" }}
+                  key={movie.id}
+                >
+                  <motion.div
+                    className=" opacity-0 absolute bottom-0 w-full bg-black"
+                    variants={infoVariants}
+                  >
+                    <h4 className=" text-lg">{movie.title}</h4>
+                  </motion.div>
+                </motion.div>
               ))}
           </motion.div>
         </AnimatePresence>
