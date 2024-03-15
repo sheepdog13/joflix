@@ -63,7 +63,7 @@ export default function Slider({ movies }: SliderProps) {
   const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
     <div className={styles.wrapper}>
-      <h2>지금 뜨는 콘텐츠</h2>
+      <h2 className="text-lg text-white ml-11 my-3">지금 뜨는 콘텐츠</h2>
       <div className={styles.slider}>
         <span onClick={decraseIndex} className={styles.pre}>
           <div>
