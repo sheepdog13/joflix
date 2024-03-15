@@ -31,7 +31,7 @@ export default function Card({ movie, similar }: CardProps) {
           <FavoriteButton />
         </div>
         <div className={styles.ContentBox}>
-          <div className={styles.longText}>{overview}</div>
+          <div className="line-clamp-6">{overview}</div>
         </div>
       </div>
     </>

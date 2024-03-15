@@ -49,6 +49,7 @@ export default async function Detail({ id }: { id: string }) {
   const movie: Movie = await getMovie(id);
   const credit = await getcredits(id);
   const similars: Similar[] = await getsimilars(id);
+
   return (
     <>
       <div className={styles.overlay}>
