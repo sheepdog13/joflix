@@ -5,6 +5,7 @@ import { Movie } from "../../(Home)/page";
 import SvgIcon from "@mui/material/SvgIcon";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Info from "../Info/Info";
 
 interface SliderProps {
   movies: Movie[];
@@ -39,22 +40,11 @@ const boxVariants = {
     scale: 1,
   },
   hover: {
-    scale: 1.3,
-    y: -50,
+    scale: 1.5,
+    y: -180,
     transition: {
       delay: 0.5,
       duaration: 0.3,
-      type: "tween",
-    },
-  },
-};
-
-const infoVariants = {
-  hover: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      duaration: 0.1,
       type: "tween",
     },
   },
@@ -64,7 +54,6 @@ export default function Slider({ movies }: SliderProps) {
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [isDirectionBack, setIsDirectionBack] = useState(false);
-
   const totalMovies = movies.length;
   const maxIndex = Math.ceil(totalMovies / offset) - 1;
 
@@ -116,7 +105,7 @@ export default function Slider({ movies }: SliderProps) {
               .slice(offset * index, offset * index + offset)
               .map((movie) => (
                 <motion.div
-                  className="w-full h-32 bg-cover bg-center origin-center first:origin-top-left last:origin-top-right"
+                  className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
                   style={{ backgroundImage: `url(${movie.backdrop_path})` }}
                   variants={boxVariants}
                   initial="normal"
@@ -124,12 +113,7 @@ export default function Slider({ movies }: SliderProps) {
                   transition={{ type: "tween" }}
                   key={movie.id}
                 >
-                  <motion.div
-                    className=" opacity-0 absolute bottom-0 w-full bg-black"
-                    variants={infoVariants}
-                  >
-                    <h4 className=" text-lg">{movie.title}</h4>
-                  </motion.div>
+                  <Info movie={movie} />
                 </motion.div>
               ))}
           </motion.div>

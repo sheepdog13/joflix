@@ -2,12 +2,13 @@ import styles from "./detail.module.css";
 import SvgIcon from "@mui/material/SvgIcon";
 import CloseIcon from "@mui/icons-material/Close";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import Link from "next/link";
 import Card from "../Card/Card";
-import FavoriteButton from "../common/FavoriteButton";
 import { getSimilars } from "../../api/movie/getSimilars";
 import { getMovie } from "../../api/movie/getMoive";
+import Button from "../Common/Button";
 
 export interface Movie {
   backdrop_path: string;
@@ -55,14 +56,19 @@ export default async function Detail({ id }: { id: string }) {
             <div style={{ marginBottom: "100px" }}>
               <h1>{movie.title}</h1>
               <div className={styles.btnBox}>
-                <div className={styles.play}>
-                  <SvgIcon component={PlayArrowIcon} />
+                <div className="flex items-center px-3 py-2 gap-1 rounded-md bg-white text-black font-medium hover:bg-white/80">
+                  <SvgIcon
+                    style={{ fontSize: "30px" }}
+                    component={PlayArrowIcon}
+                  />
                   <button>재생</button>
                 </div>
-                <FavoriteButton />
-                <div className={styles.radius}>
-                  <SvgIcon component={ThumbUpOffAltIcon} />
-                </div>
+                <Button width="45" fontsize="30" component={AddIcon} />
+                <Button
+                  width="45"
+                  fontsize="24"
+                  component={ThumbUpOffAltIcon}
+                />
               </div>
             </div>
           </div>
