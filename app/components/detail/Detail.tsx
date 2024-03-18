@@ -9,37 +9,13 @@ import Card from "../Card/Card";
 import { getSimilars } from "../../api/movie/getSimilars";
 import { getMovie } from "../../api/movie/getMoive";
 import Button from "../Common/Button";
-
-export interface Movie {
-  backdrop_path: string;
-  title: string;
-  release_date: string;
-  runtime: string;
-  overview: string;
-  genres: { id: number; name: string }[];
-}
-
-export interface Similar {
-  backdrop_path: string | null;
-  id: number;
-  original_title: string;
-  overview: string;
-  poster_path: string | null;
-  release_date: string;
-}
-
-const getcredits = async (id: string) => {
-  const response = await fetch(
-    `https://nomad-movies.nomadcoders.workers.dev/movies/${id}/credits`
-  );
-  return response.json();
-};
+import { makeImagePath } from "../../utils/makeImgPath";
+import { getCredits } from "../../api/movie/getCredits";
 
 export default async function Detail({ id }: { id: string }) {
-  const movie: Movie = await getMovie(id);
-  const credit = await getcredits(id);
-  const similars: Similar[] = await getSimilars(id);
-
+  const movie = await getMovie(id);
+  const credit = await getCredits(id);
+  const similars = await getSimilars(id);
   return (
     <>
       <div className={styles.overlay}>
@@ -47,7 +23,9 @@ export default async function Detail({ id }: { id: string }) {
           <div
             className={styles.coverBox}
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(20, 20, 20, 1)), url(${movie.backdrop_path})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(20, 20, 20, 1)), url(${makeImagePath(
+                movie.backdrop_path
+              )})`,
             }}
           >
             <Link href="/" className={styles.close}>
@@ -107,7 +85,7 @@ export default async function Detail({ id }: { id: string }) {
             <div className={styles.similarBox}>
               <h2>함께 시청된 콘텐츠</h2>
               <div className={styles.similarGrid}>
-                {similars.map((similar) => (
+                {similars.slice(0, 9).map((similar) => (
                   <Link href={{ query: { id: similar.id } }}>
                     <Card key={similar.id} movie={movie} similar={similar} />
                   </Link>

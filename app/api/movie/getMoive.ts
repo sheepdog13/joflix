@@ -1,6 +1,7 @@
-export const getMovie = async (id: number | string) => {
-  const response = await fetch(
-    `https://nomad-movies.nomadcoders.workers.dev/movies/${id}`
-  );
-  return response.json();
+import { DetailMovie } from "../../types/detailMoive";
+import { axiosInstance } from "../apiInstance";
+
+export const getMovie = async (id: number | string): Promise<DetailMovie> => {
+  const response = await axiosInstance.get(`/movie/${id}?language=ko`);
+  return response.data;
 };

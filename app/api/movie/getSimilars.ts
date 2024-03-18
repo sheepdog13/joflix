@@ -1,6 +1,10 @@
-export const getSimilars = async (id: string) => {
-  const response = await fetch(
-    `https://nomad-movies.nomadcoders.workers.dev/movies/${id}/similar`
+import { Movie } from "../../types/moive";
+import { axiosInstance } from "../apiInstance";
+
+export const getSimilars = async (id: string): Promise<Movie[]> => {
+  const response = await axiosInstance.get(
+    `/movie/${id}/similar?language=ko&page=1`
   );
-  return response.json();
+
+  return response.data.results;
 };

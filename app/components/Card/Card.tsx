@@ -1,17 +1,18 @@
 import Button from "../Common/Button";
 import AddIcon from "@mui/icons-material/Add";
-
-import { Movie, Similar } from "../Detail/Detail";
 import styles from "./card.module.css";
+import { DetailMovie } from "../../types/detailMoive";
+import { Movie } from "../../types/moive";
+import { makeImagePath } from "../../utils/makeImgPath";
 
 interface CardProps {
-  movie: Movie;
-  similar: Similar;
+  movie: DetailMovie;
+  similar: Movie;
 }
 
 export default function Card({ movie, similar }: CardProps) {
-  const { id, backdrop_path, original_title, release_date, overview } = similar;
-  const { runtime } = movie;
+  const { id, backdrop_path, title, release_date, overview } = similar;
+  const { runtime, poster_path } = movie;
 
   return (
     <>
@@ -19,11 +20,12 @@ export default function Card({ movie, similar }: CardProps) {
         <div
           className={styles.cover}
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${backdrop_path})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${makeImagePath(
+              backdrop_path || poster_path
+            )})`,
           }}
         >
-          {!backdrop_path && "이미지가 없습니다."}
-          <h3>{original_title}</h3>
+          <h3>{title}</h3>
         </div>
         <div className={styles.descBox}>
           <div className={styles.desc}>

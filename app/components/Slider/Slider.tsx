@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Movie } from "../../(Home)/page";
 import SvgIcon from "@mui/material/SvgIcon";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Info from "../Info/Info";
+import { makeImagePath } from "../../utils/makeImgPath";
+import { Movie } from "../../types/moive";
 
 interface SliderProps {
   movies: Movie[];
@@ -106,7 +107,11 @@ export default function Slider({ movies }: SliderProps) {
               .map((movie) => (
                 <motion.div
                   className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
-                  style={{ backgroundImage: `url(${movie.backdrop_path})` }}
+                  style={{
+                    backgroundImage: `url(${makeImagePath(
+                      movie.backdrop_path
+                    )})`,
+                  }}
                   variants={boxVariants}
                   initial="normal"
                   whileHover="hover"

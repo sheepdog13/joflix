@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { Movie } from "../../(Home)/page";
 import Button from "../Common/Button";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
@@ -9,6 +8,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getMovie } from "../../api/movie/getMoive";
+import { Movie } from "../../types/moive";
 
 interface InfoProps {
   movie: Movie;

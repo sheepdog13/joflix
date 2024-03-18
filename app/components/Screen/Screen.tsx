@@ -2,21 +2,23 @@ import SvgIcon from "@mui/material/SvgIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import Link from "next/link";
-import { Movie } from "../../(Home)/page";
+import { DetailMovie } from "../../types/detailMoive";
+import { makeImagePath } from "../../utils/makeImgPath";
 
 interface ScreenProps {
-  movie: Movie;
+  movie: DetailMovie;
 }
 
 export default function Screen({ movie }: ScreenProps) {
-  const { backdrop_path, id, overview, title } = movie;
-
+  const { backdrop_path, poster_path, id, overview, title } = movie;
   return (
     <>
       <div
-        className="relative h-screen p-16 flex flex-col justify-center bg-cover text-white"
+        className="relative h-screen p-16 flex flex-col justify-center bg-cover bg-center text-white"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${backdrop_path})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${makeImagePath(
+            poster_path
+          )})`,
         }}
       >
         <h1 className="text-6xl font-Cart font-bold my-4">{title}</h1>

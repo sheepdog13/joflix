@@ -5,23 +5,16 @@ import Slider from "../components/Slider/Slider";
 import { getMovie } from "../api/movie/getMoive";
 import { getMovies } from "../api/movie/getMovies";
 import { getSimilars } from "../api/movie/getSimilars";
-
-export interface Movie {
-  backdrop_path: string;
-  id: number;
-  overview: string;
-  title: string;
-  release_date: string;
-}
+import { Movie } from "../types/moive";
 
 export const metadata = {
   title: "Home",
 };
 
 export default async function Home(params: Params) {
-  const movies: Movie[] = await getMovies();
-  const movie: Movie = await getMovie(1062807);
-  const animoives: Movie[] = await getSimilars("1062807");
+  const movies = await getMovies();
+  const movie = await getMovie(1062807);
+  const animoives = await getSimilars("1062807");
   const id = params.searchParams.id;
   return (
     <div>
