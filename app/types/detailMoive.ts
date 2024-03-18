@@ -1,3 +1,8 @@
+export interface Genre {
+  id: number;
+  name: string;
+}
+
 export interface DetailMovie {
   id: number;
   backdrop_path: string;
@@ -6,5 +11,5 @@ export interface DetailMovie {
   release_date: string;
   runtime: string;
   overview: string;
-  genres: { id: number; name: string }[];
+  genres: Genre[];
 }

@@ -1,3 +1,4 @@
+"use client";
 import styles from "./detail.module.css";
 import SvgIcon from "@mui/material/SvgIcon";
 import CloseIcon from "@mui/icons-material/Close";
@@ -11,6 +12,7 @@ import { getMovie } from "../../api/movie/getMoive";
 import Button from "../Common/Button";
 import { makeImagePath } from "../../utils/makeImgPath";
 import { getCredits } from "../../api/movie/getCredits";
+import { motion } from "framer-motion";
 
 export default async function Detail({ id }: { id: string }) {
   const movie = await getMovie(id);
@@ -19,7 +21,7 @@ export default async function Detail({ id }: { id: string }) {
   return (
     <>
       <div className={styles.overlay}>
-        <div className={styles.wrapper}>
+        <motion.div layoutId={movie.id + ""} className={styles.wrapper}>
           <div
             className={styles.coverBox}
             style={{
@@ -28,7 +30,7 @@ export default async function Detail({ id }: { id: string }) {
               )})`,
             }}
           >
-            <Link href="/" className={styles.close}>
+            <Link scroll={false} href="/" className={styles.close}>
               <SvgIcon component={CloseIcon} />
             </Link>
             <div style={{ marginBottom: "100px" }}>
@@ -93,7 +95,7 @@ export default async function Detail({ id }: { id: string }) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </>
   );

@@ -9,14 +9,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getMovie } from "../../api/movie/getMoive";
 import { Movie } from "../../types/moive";
+import { Genre } from "../../types/detailMoive";
 
 interface InfoProps {
   movie: Movie;
-}
-
-interface Genres {
-  id: number;
-  name: string;
 }
 
 const infoVariants = {
@@ -32,7 +28,7 @@ const infoVariants = {
 
 export default function Info({ movie }: InfoProps) {
   const { id, title, release_date } = movie;
-  const [genres, setGenres] = useState<Genres[]>();
+  const [genres, setGenres] = useState<Genre[]>();
   useEffect(() => {
     getMovie(id).then((data) => setGenres(data.genres));
   }, []);
@@ -65,7 +61,7 @@ export default function Info({ movie }: InfoProps) {
               component={ThumbUpOffAltIcon}
             />
           </div>
-          <Link href={{ query: { id } }}>
+          <Link scroll={false} href={{ query: { id } }}>
             <Button
               width="25"
               fontsize="13"

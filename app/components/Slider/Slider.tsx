@@ -10,6 +10,7 @@ import { Movie } from "../../types/moive";
 
 interface SliderProps {
   movies: Movie[];
+  title: string;
 }
 
 const rowVariants = {
@@ -51,7 +52,7 @@ const boxVariants = {
   },
 };
 
-export default function Slider({ movies }: SliderProps) {
+export default function Slider({ movies, title }: SliderProps) {
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [isDirectionBack, setIsDirectionBack] = useState(false);
@@ -77,7 +78,7 @@ export default function Slider({ movies }: SliderProps) {
   const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
     <div className="mt-3 mb-8 text-white">
-      <h2 className="text-lg ml-11 my-3">지금 뜨는 콘텐츠</h2>
+      <h2 className="text-lg ml-11 my-3">{title}</h2>
       <div className="relative flex justify-between items-center w-full h-32 group">
         <span
           onClick={decraseIndex}
@@ -107,6 +108,7 @@ export default function Slider({ movies }: SliderProps) {
               .map((movie) => (
                 <motion.div
                   className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
+                  layoutId={movie.id + ""}
                   style={{
                     backgroundImage: `url(${makeImagePath(
                       movie.backdrop_path
