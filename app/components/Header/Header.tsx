@@ -8,10 +8,18 @@ import {
 } from "framer-motion";
 import SvgIcon from "@mui/material/SvgIcon";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+
+interface IForm {
+  keyword: string;
+}
 
 const navVariants = {
   top: {
@@ -25,7 +33,9 @@ const navVariants = {
 export default function Header() {
   const path = usePathname();
   const [searchOpen, setSearchOpen] = useState(false);
+
   const toggleSearch = () => setSearchOpen((prev) => !prev);
+
   const navAnimation = useAnimation();
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", () => {
@@ -35,6 +45,20 @@ export default function Header() {
       navAnimation.start("top");
     }
   });
+  const router = useRouter();
+  const { register, handleSubmit, setFocus, setValue, getValues } =
+    useForm<IForm>();
+  const onValid = (data: IForm) => {
+    router.push(`search?keyword=${data.keyword}`);
+    setValue("keyword", "");
+    setSearchOpen(false);
+  };
+  useEffect(() => {
+    if (searchOpen) {
+      setFocus("keyword");
+    }
+  }, [searchOpen]);
+
   return (
     <motion.div
       variants={navVariants}
@@ -42,7 +66,9 @@ export default function Header() {
       className={styles.wrapper}
     >
       <div className={styles.logoAndMenu}>
-        <img src="./img/logo.png" alt="logo" />
+        <Link href={"/"}>
+          <img src="./img/logo.png" alt="logo" />
+        </Link>
         <ul>
           <li key="home" className={path === "/" ? styles.current : ""}>
             홈
@@ -60,16 +86,26 @@ export default function Header() {
       </div>
       <div className={styles.userActionsContainer}>
         <motion.div
-          animate={{ x: searchOpen ? -280 : 0 }}
+          animate={{ x: searchOpen ? -230 : 0 }}
           transition={{ type: "linear" }}
         >
           <SvgIcon onClick={toggleSearch} component={SearchIcon} />
           {searchOpen && (
-            <motion.input
-              placeholder="제목,사람,장르"
+            <motion.form
+              onSubmit={handleSubmit(onValid)}
               animate={{ scaleX: searchOpen ? 1 : 0 }}
               transition={{ type: "linear" }}
-            />
+            >
+              <input
+                autoComplete="off"
+                {...register("keyword", { required: true })}
+                className="flex items-center bg-inherit "
+                placeholder="제목,사람,장르"
+              />
+              <button type="submit">
+                <SvgIcon component={ArrowOutwardIcon} />
+              </button>
+            </motion.form>
           )}
         </motion.div>
         <SvgIcon component={NotificationsIcon} />
