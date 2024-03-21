@@ -1,10 +1,10 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Screen from "../components/Screen/Screen";
-import Detail from "../components/Detail/Detail";
 import Slider from "../components/Slider/Slider";
 import { getMovie } from "../api/movie/getMoive";
 import { getMovies } from "../api/movie/getMovies";
 import { getSimilars } from "../api/movie/getSimilars";
+import Detail from "../components/Detail/Detail";
 
 export const metadata = {
   title: "Home",
