@@ -13,11 +13,16 @@ import Button from "../Common/Button";
 import { makeImagePath } from "../../utils/makeImgPath";
 import { getCredits } from "../../api/movie/getCredits";
 import { motion } from "framer-motion";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default async function Detail({ id }: { id: string }) {
+  const path = usePathname();
+  const params = useSearchParams();
+  const keyword = params.get("keyword");
   const movie = await getMovie(id);
   const credit = await getCredits(id);
   const similars = await getSimilars(id);
+
   return (
     <>
       <div className={styles.overlay}>
@@ -30,7 +35,14 @@ export default async function Detail({ id }: { id: string }) {
               )})`,
             }}
           >
-            <Link scroll={false} href="/" className={styles.close}>
+            <Link
+              className={styles.close}
+              href={{
+                pathname: `${path}`,
+                query: keyword ? { keyword } : {},
+              }}
+              scroll={false}
+            >
               <SvgIcon component={CloseIcon} />
             </Link>
             <div style={{ marginBottom: "100px" }}>

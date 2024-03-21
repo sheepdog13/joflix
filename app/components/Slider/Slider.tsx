@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import SvgIcon from "@mui/material/SvgIcon";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Info from "../Info/Info";
-import { makeImagePath } from "../../utils/makeImgPath";
 import { Movie } from "../../types/moive";
+import SlideCard from "../Common/SlideCard";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface SliderProps {
   movies: Movie[];
@@ -37,21 +38,6 @@ const rowVariants = {
 
 const offset = 5;
 
-const boxVariants = {
-  normal: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.5,
-    y: -180,
-    transition: {
-      delay: 0.5,
-      duaration: 0.3,
-      type: "tween",
-    },
-  },
-};
-
 export default function Slider({ movies, title }: SliderProps) {
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
@@ -76,8 +62,11 @@ export default function Slider({ movies, title }: SliderProps) {
     }
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
+  const path = usePathname();
+  const params = useSearchParams();
+  const keyword = params.get("keyword");
   return (
-    <div className="mt-3 mb-8 text-white">
+    <div className="mt-3 mb-10 text-white">
       <h2 className="text-lg ml-11 my-3">{title}</h2>
       <div className="relative flex justify-between items-center w-full h-32 group">
         <span
@@ -94,7 +83,7 @@ export default function Slider({ movies, title }: SliderProps) {
           custom={isDirectionBack}
         >
           <motion.div
-            className="absolute top-0 left-0 grid grid-cols-5 gap-1 w-full px-10"
+            className="absolute top-0 left-0 grid grid-cols-5 gap-1 w-full px-10 first-of-type:origin-top-left"
             variants={rowVariants}
             initial="hidden"
             animate="visible"
@@ -106,22 +95,7 @@ export default function Slider({ movies, title }: SliderProps) {
             {movies
               .slice(offset * index, offset * index + offset)
               .map((movie) => (
-                <motion.div
-                  className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
-                  layoutId={movie.id + ""}
-                  style={{
-                    backgroundImage: `url(${makeImagePath(
-                      movie.backdrop_path
-                    )})`,
-                  }}
-                  variants={boxVariants}
-                  initial="normal"
-                  whileHover="hover"
-                  transition={{ type: "tween" }}
-                  key={movie.id}
-                >
-                  <Info movie={movie} />
-                </motion.div>
+                <SlideCard key={movie.id} movie={movie} />
               ))}
           </motion.div>
         </AnimatePresence>

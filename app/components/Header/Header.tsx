@@ -46,8 +46,7 @@ export default function Header() {
     }
   });
   const router = useRouter();
-  const { register, handleSubmit, setFocus, setValue, getValues } =
-    useForm<IForm>();
+  const { register, handleSubmit, setFocus, setValue } = useForm<IForm>();
   const onValid = (data: IForm) => {
     router.push(`search?keyword=${data.keyword}`);
     setValue("keyword", "");
