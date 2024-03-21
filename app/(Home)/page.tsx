@@ -18,7 +18,7 @@ export default async function Home(params: Params) {
 
   const id = params.searchParams.id;
   return (
-    <div>
+    <div className=" overflow-y-hidden">
       <Screen movie={movie} />
       <div className=" absolute w-full pb-5 top-3/4">
         <Slider movies={movies} title="지금 뜨는 콘텐츠" />

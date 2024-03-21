@@ -44,7 +44,7 @@ export default function SlideCard({ movie }: SliderCardProps) {
             { scroll: false }
           );
         }}
-        className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
+        className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right cursor-pointer"
         layoutId={movie.id + ""}
         style={{
           backgroundImage: `url(${makeImagePath(
