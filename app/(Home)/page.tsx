@@ -4,7 +4,7 @@ import Slider from "../components/Slider/Slider";
 import { getMovie } from "../api/movie/getMoive";
 import { getMovies } from "../api/movie/getMovies";
 import { getSimilars } from "../api/movie/getSimilars";
-import Detail from "../components/Detail/Detail";
+import Detail from "../components/Detail/Modal";
 
 export const metadata = {
   title: "Home",

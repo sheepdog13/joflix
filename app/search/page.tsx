@@ -2,7 +2,7 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { getSearchMovies } from "../api/search/getSearchMovies";
 import SlideCard from "../components/Common/SlideCard";
-import Detail from "../components/Detail/Detail";
+import Detail from "../components/Detail/Modal";
 
 export default async function search(params: Params) {
   const movies = await getSearchMovies(params.searchParams.keyword);

@@ -15,7 +15,7 @@ import { getCredits } from "../../api/movie/getCredits";
 import { motion } from "framer-motion";
 import { usePathname, useSearchParams } from "next/navigation";
 
-export default async function Detail({ id }: { id: string }) {
+export default async function Modal({ id }: { id: string }) {
   const path = usePathname();
   const params = useSearchParams();
   const keyword = params.get("keyword");
