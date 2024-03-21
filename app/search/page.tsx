@@ -15,7 +15,7 @@ export default async function search(params: Params) {
       </h1>
       <div className="grid grid-cols-4 gap-y-14 gap-2 text-white [&>*:nth-child(4n)]:origin-top-right [&>*:nth-child(4n+1)]:origin-top-left">
         {movies.map((movie) => (
-          <SlideCard movie={movie} />
+          <SlideCard key={movie.id} movie={movie} />
         ))}
       </div>
       {id && (

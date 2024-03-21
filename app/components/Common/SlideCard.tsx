@@ -3,8 +3,7 @@ import Info from "../Info/Info";
 import { makeImagePath } from "../../utils/makeImgPath";
 import { Movie } from "../../types/moive";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface SliderCardProps {
   movie: Movie;
@@ -33,31 +32,33 @@ export default function SlideCard({ movie }: SliderCardProps) {
   const path = usePathname();
   const params = useSearchParams();
   const keyword = params.get("keyword");
+  const router = useRouter();
   return (
     mounted && (
-      <Link
-        href={{
-          pathname: `${path}`,
-          query: keyword ? { keyword, id: movie.id } : { id: movie.id },
+      <motion.div
+        onClick={() => {
+          router.push(
+            keyword
+              ? `${path}?keyword=${keyword}&id=${movie.id}`
+              : `${path}?id=${movie.id}`,
+            { scroll: false }
+          );
         }}
+        className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
+        layoutId={movie.id + ""}
+        style={{
+          backgroundImage: `url(${makeImagePath(
+            movie.backdrop_path || movie.poster_path
+          )})`,
+        }}
+        variants={boxVariants}
+        initial="normal"
+        whileHover="hover"
+        transition={{ type: "tween" }}
+        key={movie.id}
       >
-        <motion.div
-          className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right"
-          layoutId={movie.id + ""}
-          style={{
-            backgroundImage: `url(${makeImagePath(
-              movie.backdrop_path || movie.poster_path
-            )})`,
-          }}
-          variants={boxVariants}
-          initial="normal"
-          whileHover="hover"
-          transition={{ type: "tween" }}
-          key={movie.id}
-        >
-          <Info movie={movie} />
-        </motion.div>
-      </Link>
+        <Info movie={movie} />
+      </motion.div>
     )
   );
 }
