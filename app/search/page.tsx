@@ -1,8 +1,35 @@
-"use client";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { getSearchMovies } from "../api/search/getSearchMovies";
 import SlideCard from "../components/Common/SlideCard";
 import Detail from "../components/Detail/Detail";
+import { Metadata } from "next";
+import { makeImagePath } from "../utils/makeImgPath";
+import { getMovie } from "../api/movie/getMoive";
+
+export async function generateMetadata(params: Params): Promise<Metadata> {
+  const keyword = params.searchParams.keyword;
+  const id = params.searchParams.id;
+  const movies = await getSearchMovies(params.searchParams.keyword);
+  const keywordImg =
+    movies.length > 0
+      ? makeImagePath(movies[0].poster_path) ||
+        makeImagePath(movies[0].backdrop_path)
+      : "/img/bond.webp";
+  const movie = await getMovie(id);
+  const idImg = movie?.poster_path
+    ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path)
+    : "/img/bond.webp";
+  console.log(idImg);
+  return {
+    title: `${id ? movie.title : keyword}`,
+    description: `${
+      id ? movie.overview : movies[0].overview || "검색페이지 입니다."
+    }`,
+    openGraph: {
+      images: `${id ? idImg : keywordImg}`,
+    },
+  };
+}
 
 export default async function Search(params: Params) {
   const movies = await getSearchMovies(params.searchParams.keyword);

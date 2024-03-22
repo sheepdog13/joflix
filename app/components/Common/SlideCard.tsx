@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import Info from "../Info/Info";
 import { makeImagePath } from "../../utils/makeImgPath";
