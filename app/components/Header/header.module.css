@@ -25,6 +25,7 @@
 .logoAndMenu ul {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 10px;
   font-size: 13px;
   color: #e5e5e5;

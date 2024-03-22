@@ -6,8 +6,6 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Movie } from "../../types/moive";
 import SlideCard from "../Common/SlideCard";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
 
 interface SliderProps {
   movies: Movie[];
@@ -62,11 +60,8 @@ export default function Slider({ movies, title }: SliderProps) {
     }
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
-  const path = usePathname();
-  const params = useSearchParams();
-  const keyword = params.get("keyword");
   return (
-    <div className="mt-3 mb-10 text-white">
+    <section className="mt-3 mb-10 text-white">
       <h2 className="text-lg ml-11 my-3">{title}</h2>
       <div className="relative flex justify-between items-center w-full h-32 group">
         <span
@@ -108,6 +103,6 @@ export default function Slider({ movies, title }: SliderProps) {
           </div>
         </span>
       </div>
-    </div>
+    </section>
   );
 }

@@ -59,16 +59,16 @@ export default function Header() {
   }, [searchOpen]);
 
   return (
-    <motion.div
+    <motion.header
       variants={navVariants}
       animate={navAnimation}
       className={styles.wrapper}
     >
-      <div className={styles.logoAndMenu}>
-        <Link href={"/"}>
-          <img src="./img/logo.png" alt="logo" />
-        </Link>
+      <nav className={styles.logoAndMenu}>
         <ul>
+          <Link href={"/"}>
+            <img src="./img/logo.png" alt="logo" />
+          </Link>
           <li key="home" className={path === "/" ? styles.current : ""}>
             홈
           </li>
@@ -82,7 +82,7 @@ export default function Header() {
           <li key="my_list">내가 찜한 리스트</li>
           <li key="language_options">언어별로 찾아보기</li>
         </ul>
-      </div>
+      </nav>
       <div className={styles.userActionsContainer}>
         <motion.div
           animate={{ x: searchOpen ? -230 : 0 }}
@@ -113,6 +113,6 @@ export default function Header() {
           <SvgIcon component={ArrowDropDownIcon} fontSize="small" />
         </div>
       </div>
-    </motion.div>
+    </motion.header>
   );
 }

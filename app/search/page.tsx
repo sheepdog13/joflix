@@ -19,7 +19,6 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
   const idImg = movie?.poster_path
     ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path)
     : "/img/bond.webp";
-  console.log(idImg);
   return {
     title: `${id ? movie.title : keyword}`,
     description: `${
@@ -36,7 +35,7 @@ export default async function Search(params: Params) {
   const id = params.searchParams.id;
 
   return (
-    <>
+    <main>
       {movies.length ? (
         <div className="my-24">
           <h1 className="my-14 text-center text-5xl text-white">
@@ -58,9 +57,9 @@ export default async function Search(params: Params) {
           <h1 className="my-2 text-center text-2xl text-white">
             입력하신 '{params.searchParams.keyword}' (와)과
           </h1>
-          <div className="text-2xl">일치하는 결과가 없습니다.</div>
+          <p className="text-2xl">일치하는 결과가 없습니다.</p>
         </div>
       )}
-    </>
+    </main>
   );
 }

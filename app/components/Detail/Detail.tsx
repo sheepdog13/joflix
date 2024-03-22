@@ -24,7 +24,7 @@ export default async function Detail({ id }: { id: string }) {
   const similars = await getSimilars(id);
 
   return (
-    <>
+    <article>
       <div className={styles.overlay}>
         <motion.div layoutId={movie.id + ""} className={styles.wrapper}>
           <div
@@ -109,6 +109,6 @@ export default async function Detail({ id }: { id: string }) {
           </div>
         </motion.div>
       </div>
-    </>
+    </article>
   );
 }

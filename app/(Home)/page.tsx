@@ -18,7 +18,7 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
     title: `${id ? movie.title : "홈페이지"}`,
     description: `${id ? movie.overview : "nexflix 클론코딩 사이트" || ""}`,
     openGraph: {
-      images: `${id ? idImg : "/img/bond.webp"}`,
+      images: `${id ? idImg : "/img/homepreview.png"}`,
     },
   };
 }
@@ -28,15 +28,14 @@ export default async function Home(params: Params) {
   const movie = await getMovie(1062807);
   const topRated = await getMovies("top_rated");
   const test = await getSimilars("1062807", "recommendations");
-
   const id = params.searchParams.id;
+
   return (
-    <div className=" overflow-y-hidden">
+    <main className=" overflow-y-hidden">
       <Screen movie={movie} />
       <div className=" absolute w-full pb-5 top-3/4">
         <Slider movies={movies} title="지금 뜨는 콘텐츠" />
         <Slider movies={test} title="SF & 액션 판타지" />
-
         <Slider movies={topRated} title="보고 또 봐도 좋은 명작" />
       </div>
       {id && (
@@ -44,6 +43,6 @@ export default async function Home(params: Params) {
           <Detail id={id} />
         </>
       )}
-    </div>
+    </main>
   );
 }

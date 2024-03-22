@@ -40,6 +40,7 @@ export default function Info({ movie }: InfoProps) {
   return (
     <div>
       <Link
+        prefetch
         scroll={false}
         href={{ pathname: `${path}`, query: { keyword, id } }}
       >

@@ -12,7 +12,7 @@ interface ScreenProps {
 export default function Screen({ movie }: ScreenProps) {
   const { backdrop_path, poster_path, id, overview, title } = movie;
   return (
-    <>
+    <section>
       <div
         className="relative h-screen p-16 flex flex-col justify-center bg-cover bg-center text-white"
         style={{
@@ -41,6 +41,6 @@ export default function Screen({ movie }: ScreenProps) {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }
