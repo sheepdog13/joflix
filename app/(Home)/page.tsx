@@ -5,10 +5,23 @@ import { getMovie } from "../api/movie/getMoive";
 import { getMovies } from "../api/movie/getMovies";
 import { getSimilars } from "../api/movie/getSimilars";
 import Detail from "../components/Detail/Detail";
+import { makeImagePath } from "../utils/makeImgPath";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Home",
-};
+export async function generateMetadata(params: Params): Promise<Metadata> {
+  const id = params.searchParams.id;
+  const movie = await getMovie(id);
+  const idImg = movie?.poster_path
+    ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path)
+    : "/img/bond.webp";
+  return {
+    title: `${id ? movie.title : "홈페이지"}`,
+    description: `${id ? movie.overview : "nexflix 클론코딩 사이트" || ""}`,
+    openGraph: {
+      images: `${id ? idImg : "/img/bond.webp"}`,
+    },
+  };
+}
 
 export default async function Home(params: Params) {
   const movies = await getMovies();
