@@ -11,6 +11,8 @@ import { Metadata } from "next";
 export async function generateMetadata(params: Params): Promise<Metadata> {
   const id = params.searchParams.id;
   const movie = await getMovie(id);
+  const homemovie = await getMovie(1062807);
+  const homepreview = makeImagePath(homemovie.poster_path);
   const idImg = movie?.poster_path
     ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path)
     : "/img/bond.webp";
@@ -18,7 +20,7 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
     title: `${id ? movie.title : "홈페이지"}`,
     description: `${id ? movie.overview : "nexflix 클론코딩 사이트" || ""}`,
     openGraph: {
-      images: `${id ? idImg : "/img/homepreview.png"}`,
+      images: `${id ? idImg : homepreview}`,
     },
   };
 }
