@@ -22,6 +22,7 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
         id ? idImg : "https://joflix-coral.vercel.app/img/homepreview.png"
       }`,
     },
+    verification: { google: "pQ1HYdIr6PZIM0nUWK8VFx_m9vvOX4LYGbZ0Uba4mbE" },
   };
 }
 
@@ -31,7 +32,6 @@ export default async function Home(params: Params) {
   const topRated = await getMovies("top_rated");
   const test = await getSimilars("1062807", "recommendations");
   const id = params.searchParams.id;
-
   return (
     <main className=" overflow-y-hidden">
       <Screen movie={movie} />
