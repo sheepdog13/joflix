@@ -1,0 +1,7 @@
+# public/robots.txt
+
+User-agent: *
+Allow: /
+
+
+Sitemap: https://https://joflix-coral.vercel.app/sitemap.xml
