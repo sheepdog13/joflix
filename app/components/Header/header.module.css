@@ -1,8 +1,11 @@
 .wrapper {
+  @media (max-width: 640px) {
+    padding: 10px;
+  }
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 99;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,14 +15,12 @@
 }
 
 .logoAndMenu {
+  @media (max-width: 640px) {
+    display: none;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.logoAndMenu img {
-  width: 80px;
-  margin-right: 30px;
 }
 
 .logoAndMenu ul {
@@ -49,6 +50,9 @@
 }
 
 .userActionsContainer {
+  @media (max-width: 640px) {
+    gap: 0;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -62,6 +66,10 @@
 }
 
 .userActionsContainer div form {
+  @media (max-width: 640px) {
+    height: 30px;
+    font-size: 14px;
+  }
   position: absolute;
   left: -5px;
   display: flex;
@@ -77,11 +85,17 @@
 }
 
 .userActionsContainer svg {
+  @media (max-width: 640px) {
+    font-size: 20px;
+  }
   z-index: 999;
   font-size: 30px;
 }
 
 .userActionsContainer img {
+  @media (max-width: 640px) {
+    display: none;
+  }
   object-fit: cover;
   border-radius: 5px;
   width: 35px;

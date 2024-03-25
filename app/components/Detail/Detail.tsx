@@ -48,9 +48,9 @@ export default async function Detail({ id }: { id: string }) {
             <div style={{ marginBottom: "100px" }}>
               <h1>{movie.title}</h1>
               <div className={styles.btnBox}>
-                <div className="flex items-center px-3 py-2 gap-1 rounded-md bg-white text-black font-medium hover:bg-white/80">
+                <div className="flex items-center p-1.5 gap-0.5 rounded-md bg-white text-black font-medium hover:bg-white/80 sm:px-3 sm:py-2 sm:gap-1">
                   <SvgIcon
-                    style={{ fontSize: "30px" }}
+                    className=" text-2xl sm:text-3xl"
                     component={PlayArrowIcon}
                   />
                   <button>재생</button>

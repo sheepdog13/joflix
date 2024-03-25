@@ -26,6 +26,9 @@
 }
 
 .coverBox {
+  @media (max-width: 640px) {
+    height: 60vh;
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,6 +56,10 @@
 }
 
 .coverBox h1 {
+  @media (max-width: 640px) {
+    font-size: 30px;
+    width: 70%;
+  }
   font-size: 60px;
   font-family: "Cart";
   font-weight: 700;

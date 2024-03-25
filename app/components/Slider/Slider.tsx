@@ -34,7 +34,8 @@ const rowVariants = {
   }),
 };
 
-const offset = 5;
+const offset =
+  typeof window !== "undefined" ? (window.innerWidth <= 640 ? 3 : 5) : 0;
 
 export default function Slider({ movies, title }: SliderProps) {
   const [index, setIndex] = useState(0);
@@ -78,7 +79,7 @@ export default function Slider({ movies, title }: SliderProps) {
           custom={isDirectionBack}
         >
           <motion.div
-            className="absolute top-0 left-0 grid grid-cols-5 gap-1 w-full px-10 first-of-type:origin-top-left"
+            className="absolute top-0 left-0 grid grid-cols-3 gap-1 w-full px-10 first-of-type:origin-top-left sm:grid-cols-5"
             variants={rowVariants}
             initial="hidden"
             animate="visible"
