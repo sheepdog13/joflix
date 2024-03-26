@@ -62,7 +62,7 @@ export default function Slider({ movies, title }: SliderProps) {
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
   return (
-    <section className="mt-3 mb-10 text-white overflow-hidden">
+    <section className="mt-3 mb-10 text-white overflow-hidden sm:overflow-visible">
       <h2 className="text-lg ml-11 my-3">{title}</h2>
       <div className="relative flex justify-between items-center w-full h-32 group">
         <span
