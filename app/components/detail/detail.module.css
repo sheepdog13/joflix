@@ -13,6 +13,9 @@
 }
 
 .wrapper {
+  @media (max-width: 640px) {
+    width: 90%;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +30,8 @@
 
 .coverBox {
   @media (max-width: 640px) {
-    height: 60vh;
+    height: 40vh;
+    padding: 10px;
   }
   display: flex;
   flex-direction: column;
@@ -44,6 +48,11 @@
 }
 
 .close {
+  @media (max-width: 640px) {
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+  }
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -66,6 +75,9 @@
 }
 
 .btnBox {
+  @media (max-width: 640px) {
+    display: none;
+  }
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -114,6 +126,10 @@
   font-size: 18px;
 }
 .content {
+  @media (max-width: 640px) {
+    padding: 0 20px;
+    font-size: 12px;
+  }
   width: 100%;
   padding: 0 50px;
   line-height: 1.3;
@@ -136,12 +152,6 @@
   gap: 10px;
 }
 
-.leftBox div {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-}
-
 .rightBox {
   width: 40%;
   display: flex;
@@ -154,17 +164,14 @@
 }
 
 .similarBox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  width: 100%;
   color: #fff;
 }
-.similarBox h2 {
-  font-size: 25px;
-  font-weight: normal;
-}
+
 .similarGrid {
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;

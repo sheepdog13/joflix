@@ -33,7 +33,7 @@ export default async function Home(params: Params) {
   const test = await getSimilars("1062807", "recommendations");
   const id = params.searchParams.id;
   return (
-    <main className=" overflow-y-hidden">
+    <main>
       <Screen movie={movie} />
       <div className=" absolute w-full pb-5 top-2/3 sm:top-3/4">
         <Slider movies={movies} title="지금 뜨는 콘텐츠" />

@@ -25,7 +25,7 @@ export default function Card({ movie, similar }: CardProps) {
             )})`,
           }}
         >
-          <h3>{title}</h3>
+          <p className="text-sm text-center font-bold sm:text-xl">{title}</p>
         </div>
         <div className={styles.descBox}>
           <div className={styles.desc}>

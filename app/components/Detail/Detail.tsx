@@ -45,7 +45,7 @@ export default async function Detail({ id }: { id: string }) {
             >
               <SvgIcon component={CloseIcon} />
             </Link>
-            <div style={{ marginBottom: "100px" }}>
+            <div className="mb-14 ml-5 sm:mb-24 sm:ml-0">
               <h1>{movie.title}</h1>
               <div className={styles.btnBox}>
                 <div className="flex items-center p-1.5 gap-0.5 rounded-md bg-white text-black font-medium hover:bg-white/80 sm:px-3 sm:py-2 sm:gap-1">
@@ -71,7 +71,9 @@ export default async function Detail({ id }: { id: string }) {
                   <div>{movie.release_date}</div>
                   <div>{movie.runtime} 분</div>
                 </div>
-                <div style={{ color: "white" }}>{movie.overview}</div>
+                <div className="text-white line-clamp-6 sm:line-clamp-none">
+                  {movie.overview}
+                </div>
               </div>
               <div className={styles.rightBox}>
                 <div>
@@ -96,9 +98,9 @@ export default async function Detail({ id }: { id: string }) {
                 </div>
               </div>
             </div>
-            <div className={styles.similarBox}>
-              <h2>함께 시청된 콘텐츠</h2>
-              <div className={styles.similarGrid}>
+            <div className="text-white">
+              <p className="text-lg sm:text-2xl mb-4">함께 시청된 콘텐츠</p>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {similars.slice(0, 9).map((similar) => (
                   <Link href={{ query: { id: similar.id } }}>
                     <Card key={similar.id} movie={movie} similar={similar} />

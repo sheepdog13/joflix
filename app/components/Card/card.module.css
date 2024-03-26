@@ -1,4 +1,7 @@
 .wrapper {
+  @media (max-width: 640px) {
+    padding: 0;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +10,9 @@
 }
 
 .cover {
+  @media (max-width: 640px) {
+    margin-bottom: 0;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,13 +27,10 @@
   font-size: 15px;
 }
 
-.wrapper h3 {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-}
-
 .descBox {
+  @media (max-width: 640px) {
+    display: none;
+  }
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,6 +47,9 @@
 }
 
 .ContentBox {
+  @media (max-width: 640px) {
+    display: none;
+  }
   padding: 0 20px;
 }
 

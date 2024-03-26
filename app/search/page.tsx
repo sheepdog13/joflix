@@ -41,7 +41,7 @@ export default async function Search(params: Params) {
           <h1 className="my-14 text-center text-5xl text-white">
             {params.searchParams.keyword}
           </h1>
-          <div className="grid grid-cols-4 gap-y-14 gap-2 text-white [&>*:nth-child(4n)]:origin-top-right [&>*:nth-child(4n+1)]:origin-top-left">
+          <div className="grid gap-2 text-white [&>*:nth-child(4n)]:origin-top-right [&>*:nth-child(4n+1)]:origin-top-left grid-cols-3 gap-y-6 sm:grid-cols-4 sm:gap-y-14">
             {movies.map((movie) => (
               <SlideCard key={movie.id} movie={movie} />
             ))}
