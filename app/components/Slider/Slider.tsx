@@ -67,7 +67,7 @@ export default function Slider({ movies, title }: SliderProps) {
       <div className="relative flex justify-between items-center w-full h-32 group">
         <span
           onClick={decraseIndex}
-          className="opacity-0 group-hover:opacity-100 group-hover:bg-gray-700/[.3] absolute top-0 left-0 flex justify-center items-center w-10 h-32 rounded-br-md rounded-tl-md z-50 "
+          className="sm:opacity-0 sm:group-hover:opacity-100 group-hover:bg-gray-700/[.3] absolute top-0 left-0 flex justify-center items-center w-10 h-32 rounded-br-md rounded-tl-md z-50 "
         >
           <div>
             <SvgIcon fontSize="large" component={ArrowBackIosNewIcon} />
@@ -97,7 +97,7 @@ export default function Slider({ movies, title }: SliderProps) {
         </AnimatePresence>
         <span
           onClick={incraseIndex}
-          className="opacity-0 group-hover:opacity-100 group-hover:bg-gray-700/[.3] absolute top-0 right-0 flex justify-center items-center w-4/25 h-32 rounded-br-md rounded-tr-md z-50 "
+          className="sm:opacity-0 sm:group-hover:opacity-100 group-hover:bg-gray-700/[.3] absolute top-0 right-0 flex justify-center items-center w-4/25 h-32 rounded-br-md rounded-tr-md z-50 "
         >
           <div>
             <SvgIcon fontSize="large" component={ArrowForwardIosIcon} />
