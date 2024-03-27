@@ -1,3 +1,4 @@
+"use server";
 import SvgIcon from "@mui/material/SvgIcon";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
@@ -9,7 +10,7 @@ interface ScreenProps {
   movie: DetailMovie;
 }
 
-export default function Screen({ movie }: ScreenProps) {
+export default async function Screen({ movie }: ScreenProps) {
   const { backdrop_path, poster_path, id, overview, title } = movie;
   return (
     <section className="bg-fixed">
