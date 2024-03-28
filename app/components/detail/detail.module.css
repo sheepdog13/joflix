@@ -26,6 +26,7 @@
   background-color: #141414;
   border-radius: 10px;
   gap: 10px;
+  transform-origin: center center;
 }
 
 .coverBox {

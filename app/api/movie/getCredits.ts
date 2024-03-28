@@ -1,6 +1,6 @@
 import { axiosInstance } from "../apiInstance";
 
-interface Credits {
+export interface Credits {
   gender: number;
   id: number;
   name: string;
