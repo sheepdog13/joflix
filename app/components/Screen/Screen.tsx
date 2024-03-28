@@ -41,7 +41,7 @@ export default async function Screen({ movie }: ScreenProps) {
               className="text-xl sm:text-3xl"
               component={ErrorOutlineOutlinedIcon}
             />
-            <Link scroll={false} href={{ query: { id } }}>
+            <Link prefetch={true} scroll={false} href={{ query: { id } }}>
               상세 정보
             </Link>
           </div>
