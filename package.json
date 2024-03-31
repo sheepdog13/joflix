@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore ."
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "e2e": "cypress open"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "autoprefixer": "^10.4.18",
+    "cypress": "^13.7.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
