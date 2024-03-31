@@ -36,7 +36,11 @@ export default function Detail({ id }: { id: string }) {
     movie && (
       <article>
         <div className={styles.overlay}>
-          <motion.div layoutId={movie.id + ""} className={styles.wrapper}>
+          <motion.div
+            layoutId={movie.id + ""}
+            transition={{ type: false }}
+            className={styles.wrapper}
+          >
             <div
               className={styles.coverBox}
               style={{
