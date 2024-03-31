@@ -1,36 +1,32 @@
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import Screen from "../components/Screen/Screen";
-import Slider from "../components/Slider/Slider";
-import { getMovie } from "../api/movie/getMoive";
-import { getMovies } from "../api/movie/getMovies";
-import { getSimilars } from "../api/movie/getSimilars";
-import Detail from "../components/Detail/Detail";
-import { makeImagePath } from "../utils/makeImgPath";
-import { Metadata } from "next";
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import Screen from '../components/Screen/Screen';
+import Slider from '../components/Slider/Slider';
+import { getMovie } from '../api/movie/getMoive';
+import { getMovies } from '../api/movie/getMovies';
+import { getSimilars } from '../api/movie/getSimilars';
+import Detail from '../components/Detail/Detail';
+import { makeImagePath } from '../utils/makeImgPath';
+import { Metadata } from 'next';
 
 export async function generateMetadata(params: Params): Promise<Metadata> {
   const id = params.searchParams.id;
   const movie = await getMovie(id);
-  const idImg = movie?.poster_path
-    ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path)
-    : "/img/bond.webp";
+  const idImg = movie?.poster_path ? makeImagePath(movie.poster_path) || makeImagePath(movie.backdrop_path) : '/img/bond.webp';
   return {
-    title: `${id ? movie.title : "홈페이지"}`,
-    description: `${id ? movie.overview : "nexflix 클론코딩 사이트" || ""}`,
+    title: `${id ? movie.title : '홈페이지'}`,
+    description: `${id ? movie.overview : 'nexflix 클론코딩 사이트' || ''}`,
     openGraph: {
-      images: `${
-        id ? idImg : "https://joflix-coral.vercel.app/img/homepreview.png"
-      }`,
+      images: `${id ? idImg : 'https://joflix-coral.vercel.app/img/homepreview.png'}`,
     },
-    verification: { google: "pQ1HYdIr6PZIM0nUWK8VFx_m9vvOX4LYGbZ0Uba4mbE" },
+    verification: { google: 'pQ1HYdIr6PZIM0nUWK8VFx_m9vvOX4LYGbZ0Uba4mbE' },
   };
 }
 
 export default async function Home(params: Params) {
   const movies = await getMovies();
   const movie = await getMovie(1062807);
-  const topRated = await getMovies("top_rated");
-  const test = await getSimilars("1062807", "recommendations");
+  const topRated = await getMovies('top_rated');
+  const test = await getSimilars('1062807', 'recommendations');
   const id = params.searchParams.id;
   return (
     <main>

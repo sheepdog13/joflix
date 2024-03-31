@@ -49,6 +49,7 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
   };
 }
 ```
+
 <p>
 <img width="300" alt="스크린샷 2024-03-25 오전 11 51 06" src="https://github.com/sheepdog13/joflix/assets/112137282/67bc811e-f05a-44a9-90cf-0da5753b64a8">
 <img width="295" alt="스크린샷 2024-03-25 오전 11 51 27" src="https://github.com/sheepdog13/joflix/assets/112137282/ce644a4e-5733-4050-9c0e-8ccade8a5c40">
@@ -106,5 +107,3 @@ Sitemap: https://https://joflix-coral.vercel.app/sitemap.xml
 ```
 
 [블로그 링크 걸기](https://github.com/sheepdog13/joflix/commit/7274aed4c97dd1c0c193e246a937dc9ff085ea3f)
-
-

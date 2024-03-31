@@ -1,17 +1,17 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://joflix-coral.vercel.app",
+      url: 'https://joflix-coral.vercel.app',
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: "https://joflix-coral.vercel.app/search",
+      url: 'https://joflix-coral.vercel.app/search',
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
   ];

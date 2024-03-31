@@ -1,5 +1,5 @@
-import { DetailMovie } from "../../types/detailMoive";
-import { axiosInstance } from "../apiInstance";
+import { DetailMovie } from '../../types/detailMoive';
+import { axiosInstance } from '../apiInstance';
 
 export const getMovie = async (id: number | string): Promise<DetailMovie> => {
   try {
