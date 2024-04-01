@@ -1,4 +1,4 @@
-import { axiosInstance } from "../apiInstance";
+import { axiosInstance } from '../apiInstance';
 
 export interface Credits {
   gender: number;

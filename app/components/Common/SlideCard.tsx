@@ -1,10 +1,10 @@
-"use client";
-import { motion } from "framer-motion";
-import Info from "../Info/Info";
-import { makeImagePath } from "../../utils/makeImgPath";
-import { Movie } from "../../types/moive";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+'use client';
+import { motion } from 'framer-motion';
+import Info from '../Info/Info';
+import { makeImagePath } from '../../utils/makeImgPath';
+import { Movie } from '../../types/moive';
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 interface SliderCardProps {
   movie: Movie;
@@ -20,7 +20,7 @@ const boxVariants = {
     transition: {
       delay: 0.5,
       duaration: 0.3,
-      type: "tween",
+      type: 'tween',
     },
   },
 };
@@ -32,30 +32,23 @@ export default function SlideCard({ movie }: SliderCardProps) {
   }, []);
   const path = usePathname();
   const params = useSearchParams();
-  const keyword = params.get("keyword");
+  const keyword = params.get('keyword');
   const router = useRouter();
   return (
     mounted && (
       <motion.div
         onClick={() => {
-          router.push(
-            keyword
-              ? `${path}?keyword=${keyword}&id=${movie.id}`
-              : `${path}?id=${movie.id}`,
-            { scroll: false }
-          );
+          router.push(keyword ? `${path}?keyword=${keyword}&id=${movie.id}` : `${path}?id=${movie.id}`, { scroll: false });
         }}
         className="w-full h-32 bg-cover bg-center origin-center hover:rounded-t-md first:origin-top-left last:origin-top-right cursor-pointer"
-        layoutId={movie.id + ""}
+        layoutId={movie.id + ''}
         style={{
-          backgroundImage: `url(${makeImagePath(
-            movie.backdrop_path || movie.poster_path
-          )})`,
+          backgroundImage: `url(${makeImagePath(movie.backdrop_path || movie.poster_path)})`,
         }}
         variants={boxVariants}
         initial="normal"
         whileHover="hover"
-        transition={{ type: "tween" }}
+        transition={{ type: 'tween' }}
         key={movie.id}
       >
         <Info movie={movie} />

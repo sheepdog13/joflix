@@ -1,9 +1,9 @@
-import Button from "../Common/Button";
-import AddIcon from "@mui/icons-material/Add";
-import styles from "./card.module.css";
-import { DetailMovie } from "../../types/detailMoive";
-import { Movie } from "../../types/moive";
-import { makeImagePath } from "../../utils/makeImgPath";
+import Button from '../Common/Button';
+import AddIcon from '@mui/icons-material/Add';
+import styles from './card.module.css';
+import { DetailMovie } from '../../types/detailMoive';
+import { Movie } from '../../types/moive';
+import { makeImagePath } from '../../utils/makeImgPath';
 
 interface CardProps {
   movie: DetailMovie;
@@ -20,9 +20,7 @@ export default function Card({ movie, similar }: CardProps) {
         <div
           className={styles.cover}
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${makeImagePath(
-              backdrop_path || poster_path
-            )})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${makeImagePath(backdrop_path || poster_path)})`,
           }}
         >
           <p className="text-sm text-center font-bold sm:text-xl">{title}</p>

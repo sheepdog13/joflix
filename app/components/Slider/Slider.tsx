@@ -1,11 +1,11 @@
-"use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import SvgIcon from "@mui/material/SvgIcon";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Movie } from "../../types/moive";
-import SlideCard from "../Common/SlideCard";
+'use client';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import SvgIcon from '@mui/material/SvgIcon';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Movie } from '../../types/moive';
+import SlideCard from '../Common/SlideCard';
 
 interface SliderProps {
   movies: Movie[];
@@ -14,28 +14,17 @@ interface SliderProps {
 
 const rowVariants = {
   hidden: (isDirectionBack: boolean) => ({
-    x:
-      typeof window !== "undefined"
-        ? isDirectionBack
-          ? window.innerWidth + 5
-          : -window.innerWidth - 5
-        : "",
+    x: typeof window !== 'undefined' ? (isDirectionBack ? window.innerWidth + 5 : -window.innerWidth - 5) : '',
   }),
   visible: {
     x: 0,
   },
   exit: (isDirectionBack: boolean) => ({
-    x:
-      typeof window !== "undefined"
-        ? isDirectionBack
-          ? -window.innerWidth - 5
-          : +window.innerWidth + 5
-        : "",
+    x: typeof window !== 'undefined' ? (isDirectionBack ? -window.innerWidth - 5 : +window.innerWidth + 5) : '',
   }),
 };
 
-const offset =
-  typeof window !== "undefined" ? (window.innerWidth <= 640 ? 3 : 5) : 0;
+const offset = typeof window !== 'undefined' ? (window.innerWidth <= 640 ? 3 : 5) : 0;
 
 export default function Slider({ movies, title }: SliderProps) {
   const [index, setIndex] = useState(0);
@@ -73,11 +62,7 @@ export default function Slider({ movies, title }: SliderProps) {
             <SvgIcon fontSize="large" component={ArrowBackIosNewIcon} />
           </div>
         </span>
-        <AnimatePresence
-          initial={false}
-          onExitComplete={toggleLeaving}
-          custom={isDirectionBack}
-        >
+        <AnimatePresence initial={false} onExitComplete={toggleLeaving} custom={isDirectionBack}>
           <motion.div
             className="absolute top-0 left-0 grid grid-cols-3 gap-1 w-full px-10 first-of-type:origin-top-left sm:grid-cols-5"
             variants={rowVariants}
@@ -85,14 +70,12 @@ export default function Slider({ movies, title }: SliderProps) {
             animate="visible"
             exit="exit"
             custom={isDirectionBack}
-            transition={{ type: "tween", duration: 1 }}
+            transition={{ type: 'tween', duration: 1 }}
             key={index}
           >
-            {movies
-              .slice(offset * index, offset * index + offset)
-              .map((movie) => (
-                <SlideCard key={movie.id} movie={movie} />
-              ))}
+            {movies.slice(offset * index, offset * index + offset).map((movie) => (
+              <SlideCard key={movie.id} movie={movie} />
+            ))}
           </motion.div>
         </AnimatePresence>
         <span
