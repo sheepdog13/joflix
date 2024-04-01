@@ -44,7 +44,7 @@ export default async function Search(params: Params) {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center text-white w-full h-screen">
-          <h1 className="my-2 text-center text-2xl text-white">입력하신 '{params.searchParams.keyword}' (와)과</h1>
+          <h1 className="my-2 text-center text-2xl text-white">입력하신 {params.searchParams.keyword} (와)과</h1>
           <p className="text-2xl">일치하는 결과가 없습니다.</p>
         </div>
       )}

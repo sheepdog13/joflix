@@ -11,7 +11,7 @@ interface ScreenProps {
 }
 
 export default async function Screen({ movie }: ScreenProps) {
-  const { backdrop_path, poster_path, id, overview, title } = movie;
+  const { poster_path, id, overview, title } = movie;
   return (
     <section className="bg-fixed">
       <div
