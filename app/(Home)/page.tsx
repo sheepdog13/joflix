@@ -7,6 +7,7 @@ import { getSimilars } from '../api/movie/getSimilars';
 import Detail from '../components/Detail/Detail';
 import { makeImagePath } from '../utils/makeImgPath';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export async function generateMetadata(params: Params): Promise<Metadata> {
   const id = params.searchParams.id;
@@ -24,18 +25,21 @@ export async function generateMetadata(params: Params): Promise<Metadata> {
 
 export default async function Home(params: Params) {
   const movies = await getMovies();
-  const movie = await getMovie(1062807);
   const topRated = await getMovies('top_rated');
   const test = await getSimilars('1062807', 'recommendations');
   const id = params.searchParams.id;
   return (
     <main>
-      <Screen movie={movie} />
-      <div className=" absolute w-full pb-5 top-2/3 sm:top-3/4">
-        <Slider movies={movies} title="지금 뜨는 콘텐츠" />
-        <Slider movies={test} title="SF & 액션 판타지" />
-        <Slider movies={topRated} title="보고 또 봐도 좋은 명작" />
-      </div>
+      <Suspense>
+        <Screen />
+      </Suspense>
+      <Suspense>
+        <div className=" absolute w-full pb-5 top-2/3 sm:top-3/4">
+          <Slider movies={movies} title="지금 뜨는 콘텐츠" />
+          <Slider movies={test} title="SF & 액션 판타지" />
+          <Slider movies={topRated} title="보고 또 봐도 좋은 명작" />
+        </div>
+      </Suspense>
       {id && (
         <>
           <Detail id={id} />

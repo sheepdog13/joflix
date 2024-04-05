@@ -3,15 +3,14 @@ import SvgIcon from '@mui/material/SvgIcon';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import Link from 'next/link';
-import { DetailMovie } from '../../types/detailMoive';
 import { makeImagePath } from '../../utils/makeImgPath';
+import { getMovie } from '../../api/movie/getMoive';
 
-interface ScreenProps {
-  movie: DetailMovie;
-}
+export default async function Screen() {
+  const movie = await getMovie(1062807);
 
-export default async function Screen({ movie }: ScreenProps) {
   const { poster_path, id, overview, title } = movie;
+
   return (
     <section className="bg-fixed">
       <div
