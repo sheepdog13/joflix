@@ -136,6 +136,11 @@ export default function Home() {
 
 ### [블로그 suspense 정리](https://velog.io/@sheepdog13/next13-%EB%B2%84%EC%A0%84-suspense-%EC%A0%95%EB%A6%AC)
 
-### Husky, Lint-staged를 이용한 Pre-commit Hook 구현
+### 3. Husky, Lint-staged를 이용한 Pre-commit Hook 구현
 
 staging 상태의 코드중 오류가 있는 코드가 있는경우 커밋을 못하게 pre-commit hook을 구현 했습니다.
+
+<img width="804" alt="3-1" src="https://github.com/sheepdog13/joflix/assets/112137282/7aa1658f-dc99-4e7b-8673-a3bb53aac186">
+
+### [eslint,prettier 설정, Pre-commit Hook 구현](https://velog.io/@sheepdog13/eslintprettier-%EC%84%A4%EC%A0%95-Pre-commit-Hook-%EA%B5%AC%ED%98%84)
+
