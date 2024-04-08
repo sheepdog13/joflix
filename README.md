@@ -106,4 +106,36 @@ Sitemap: https://https://joflix-coral.vercel.app/sitemap.xml
 
 ```
 
-[블로그 링크 걸기](https://github.com/sheepdog13/joflix/commit/7274aed4c97dd1c0c193e246a937dc9ff085ea3f)
+### [블로그 seo 정리](https://velog.io/@sheepdog13/next13-seo-%EC%A0%95%EB%A6%AC)
+
+### 2. suspense
+
+2.1 suspense로 HTML 스트리밍
+
+```js
+// app/page.tsx
+export default function Home() {
+  return (
+    <main>
+      <Suspense>
+        <Screen />
+      </Suspense>
+      <Suspense>
+        <div className=" absolute w-full pb-5 top-2/3 sm:top-3/4">
+          <Slider title="지금 뜨는 콘텐츠" />
+        </div>
+      </Suspense>
+    </main>
+  );
+}
+```
+
+먼저 data fetching이 완료된 컴포넌트 부터 클라이언트에게 html을 보낼 수 있게 suspense로 감싸 처리 했습니다.
+
+더 나아가 html의 렌더링이 끝난 컴포넌트는 html과 js로직을 연결(hydration)합니다.
+
+### [블로그 suspense 정리](https://velog.io/@sheepdog13/next13-%EB%B2%84%EC%A0%84-suspense-%EC%A0%95%EB%A6%AC)
+
+### Husky, Lint-staged를 이용한 Pre-commit Hook 구현
+
+staging 상태의 코드중 오류가 있는 코드가 있는경우 커밋을 못하게 pre-commit hook을 구현 했습니다.
